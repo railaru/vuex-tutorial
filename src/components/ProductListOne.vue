@@ -11,6 +11,7 @@
 				</tr>
 			</table>
 		</div>
+		<button @click="reducePrice">Reduce Price</button>
 	</section>
 </template>
 
@@ -22,6 +23,11 @@ export default {
 		},
 		saleProducts() {
 			return this.$store.getters.saleProducts;
+		},
+	},
+	methods: {
+		reducePrice() {
+			this.$store.commit('reducePrice');
 		},
 	},
 };
