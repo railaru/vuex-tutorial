@@ -11,24 +11,27 @@
 				</tr>
 			</table>
 		</div>
-		<button @click="reducePrice">Reduce Price</button>
+		<button @click="reducePrice(10)">Reduce Price</button>
 	</section>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
+
 export default {
 	computed: {
 		products() {
 			return this.$store.state.products;
-		},
-		saleProducts() {
-			return this.$store.getters.saleProducts;
-		},
+        },
+        ...mapGetters([
+            'saleProducts'
+        ])
 	},
 	methods: {
-		reducePrice() {
-			this.$store.commit('reducePrice');
-		},
+        ...mapActions([
+            'reducePrice'
+        ])
 	},
 };
 </script>
