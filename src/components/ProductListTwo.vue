@@ -2,8 +2,9 @@
 	<section>
 		<h2>Product List Two</h2>
 		<ul>
-			<li :key="product.id" v-for="product in products">
+			<li :key="product.id" v-for="product in saleProducts">
 				{{ product.name }}
+				{{ product.price }}
 			</li>
 		</ul>
 	</section>
@@ -14,6 +15,9 @@ export default {
 	computed: {
 		products() {
 			return this.$store.state.products;
+		},
+		saleProducts() {
+			return this.$store.getters.saleProducts;
 		},
 	},
 };
