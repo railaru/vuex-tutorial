@@ -1,33 +1,36 @@
 <template>
 	<section>
 		<h2>Product List One</h2>
-		<ul>
-			<li :key="product.id" v-for="product in products">
-                {{ product.name }}
-            </li>
-		</ul>
+		<div :key="product.id" v-for="product in products">
+			<table>
+				<tr>
+					<td><b>name:</b> {{ product.name }}</td>
+					<td style="padding-left: 20px;"><b>price:</b> {{ product.price }}</td>
+				</tr>
+			</table>
+		</div>
 	</section>
 </template>
 
 <script>
 export default {
-	props: {
-		products: Array,
+	computed: {
+		products() {
+			return this.$store.state.products;
+		},
 	},
 };
 </script>
 
 <style scoped>
+section {
+	padding: 20px;
+	background: rgb(238, 238, 137);
+}
 
-    section {
-        padding: 20px;
-        background: rgb(238, 238, 137);
-    }
-
-    ul {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 20px;
-    }
-
+ul {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+}
 </style>
